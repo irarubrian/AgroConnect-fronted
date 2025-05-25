@@ -1,0 +1,505 @@
+.container {
+  background: linear-gradient(to bottom, white, #f0fdf4);
+  padding: 4rem 1rem;
+}
+
+.contentWrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.mainTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #059669, #2563eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.headerDescription {
+  font-size: 1.25rem;
+  color: #4b5563;
+  max-width: 56rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.section {
+  margin-bottom: 6rem;
+}
+
+.sectionTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.titleUnderline {
+  position: relative;
+  display: inline-block;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background: linear-gradient(to right, #4ade80, #3b82f6);
+  border-radius: 9999px;
+}
+
+.blueToGreen {
+  background: linear-gradient(to right, #60a5fa, #4ade80);
+}
+
+.chartsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .chartsContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chartCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.chartCard:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.greenBorder {
+  border-left: 4px solid #10b981;
+}
+
+.blueBorder {
+  border-left: 4px solid #3b82f6;
+}
+
+.chartTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.chartWrapper {
+  height: 20rem;
+}
+
+.legendContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+}
+
+.legendColor {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  margin-right: 0.25rem;
+}
+
+.legendText {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.programsGrid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .programsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .programsGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.programCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border-top-width: 4px;
+  border-top-style: solid;
+}
+
+.programCard:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.programIconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.programIconBackground {
+  padding: 1rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.programIcon {
+  font-size: 2.25rem;
+}
+
+.programTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.programDescription {
+  color: #4b5563;
+  text-align: center;
+  line-height: 1.75;
+}
+
+.metricsSection {
+  background: linear-gradient(to right, #059669, #2563eb);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  margin-bottom: 6rem;
+  color: white;
+  text-align: center;
+}
+
+.metricsTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.metricCard {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(4px);
+}
+
+.metricValue {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.metricValue.green {
+  color: #bbf7d0;
+}
+
+.metricValue.blue {
+  color: #bfdbfe;
+}
+
+.metricValue.yellow {
+  color: #fef08a;
+}
+
+.metricDescription {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.storySection {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin-bottom: 6rem;
+}
+
+.storyOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(22, 101, 52, 0.9);
+}
+
+.storyContent {
+  position: relative;
+  z-index: 10;
+  padding: 3rem;
+}
+
+.storyInner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.storyHeader {
+  margin-bottom: 2rem;
+}
+
+.storyLabel {
+  font-weight: 600;
+  color: #86efac;
+}
+
+.storyTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.storyQuote {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  border-left: 4px solid #4ade80;
+  padding-left: 1.5rem;
+}
+
+.storyAuthor {
+  text-align: right;
+  font-weight: 600;
+  color: #86efac;
+}
+
+.storyBackground {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+}
+
+.ctaSection {
+  text-align: center;
+  background: white;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+/* Children's Stories Section */
+.childrenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.childCard {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.childImageContainer {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.childImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.childCard:hover .childImage {
+  transform: scale(1.05);
+}
+
+.childAgeTag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.childContent {
+  padding: 20px;
+}
+
+.childName {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.childStory {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.childDetails {
+  background-color: var(--background-light);
+  padding: 15px;
+  border-radius: var(--border-radius);
+}
+
+.detailItem {
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.detailItem:last-child {
+  margin-bottom: 0;
+}
+
+.detailLabel {
+  font-weight: 600;
+  margin-right: 5px;
+  color: var(--text-primary);
+  min-width: 100px;
+}
+
+.detailValue {
+  color: var(--text-secondary);
+}
+
+.ctaTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #059669, #2563eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.ctaDescription {
+  font-size: 1.25rem;
+  color: #4b5563;
+  max-width: 56rem;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  position: relative;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.button:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.primaryButton {
+  background: linear-gradient(to right, #059669, #10b981);
+  color: white;
+}
+
+.secondaryButton {
+  background: white;
+  color: #059669;
+  border: 2px solid #059669;
+}
+
+.tertiaryButton {
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  color: white;
+}
+
+.buttonHover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #10b981, #34d399);
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.primaryButton:hover .buttonHover,
+.tertiaryButton:hover .buttonHover {
+  opacity: 1;
+}
+
+.secondaryButton:hover {
+  background: #f9fafb;
+}
+
+.buttonText {
+  position: relative;
+  z-index: 10;
+}
+
+.ctaFooter {
+  margin-top: 2rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
