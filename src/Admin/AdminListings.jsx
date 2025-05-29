@@ -8,7 +8,7 @@ export default function AdminListings() {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch('http://localhost:5000/admin/listings', {
+    fetch('https://agroconnect-backend-13.onrender.com/admin/listings', {
       headers: { 'x-access-token': token }
     })
       .then(res => res.json())

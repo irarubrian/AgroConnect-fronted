@@ -13,10 +13,10 @@ const CropDetails = () => {
       try {
         const token = localStorage.getItem('token');
         const [cropRes, activitiesRes] = await Promise.all([
-          axios.get(`http://localhost:5000/crops/${id}`, {
+          axios.get(`https://agroconnect-backend-13.onrender.com/crops/${id}`, {
             headers: { 'x-access-token': token }
           }),
-          axios.get(`http://localhost:5000/crops/${id}/activities`, {
+          axios.get(`https://agroconnect-backend-13.onrender.com/crops/${id}/activities`, {
             headers: { 'x-access-token': token }
           })
         ]);

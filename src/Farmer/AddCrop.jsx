@@ -33,7 +33,7 @@ const AddCrop = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/crops', formData, {
+      await axios.post('https://agroconnect-backend-13.onrender.com/crops', formData, {
         headers: { 'x-access-token': token }
       });
       navigate('/crops');

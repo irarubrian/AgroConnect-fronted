@@ -1,41 +1,104 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({ onLogin }) {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.username.trim() || !formData.password.trim()) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      // Timeout safeguard (10 seconds)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      const response = await fetch('https://agroconnect-backend-13.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
-      })
+        body: JSON.stringify(formData),
+        credentials: 'include',
+        signal: controller.signal
+      });
 
-      const data = await response.json()
+      clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed')
+      // Check if response exists and is JSON
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        throw new Error('Invalid server response');
       }
 
-      onLogin(data.user, data.token)
-      navigate('/')
+      if (!response.ok) {
+        throw new Error(data?.message || 'Login failed. Please try again.');
+      }
+
+      // Validate response structure
+      if (!data?.user || !data?.token) {
+        throw new Error('Invalid response format from server');
+      }
+
+      // Safely call onLogin
+      if (typeof onLogin === 'function') {
+        try {
+          onLogin(data.user, data.token);
+        } catch (loginError) {
+          console.error('Login callback error:', loginError);
+        }
+      }
+
+      // Safely navigate
+      try {
+        navigate('/');
+      } catch (navigationError) {
+        console.error('Navigation error:', navigationError);
+        window.location.href = '/'; // Fallback
+      }
+
     } catch (err) {
-      setError(err.message)
+      // Handle specific error cases
+      let errorMessage = 'An error occurred during login';
+      
+      if (err.name === 'AbortError') {
+        errorMessage = 'Request timed out. Please try again.';
+      } else if (err.message.includes('NetworkError')) {
+        errorMessage = 'Network error. Please check your connection.';
+      } else {
+        errorMessage = err.message || errorMessage;
+      }
+
+      setError(errorMessage);
+      
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const styles = {
     container: {
@@ -105,7 +168,7 @@ export default function Login({ onLogin }) {
       textDecoration: 'none',
       fontWeight: 'bold',
     },
-  }
+  };
 
   return (
     <div style={styles.container}>
@@ -116,22 +179,26 @@ export default function Login({ onLogin }) {
           <label htmlFor="username" style={styles.label}>Username</label>
           <input
             id="username"
+            name="username"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleChange}
             style={styles.input}
             required
+            aria-required="true"
           />
         </div>
         <div>
           <label htmlFor="password" style={styles.label}>Password</label>
           <input
             id="password"
+            name="password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleChange}
             style={styles.input}
             required
+            aria-required="true"
           />
         </div>
         <button
@@ -143,6 +210,7 @@ export default function Login({ onLogin }) {
           }}
           onMouseOver={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseOut={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
+          aria-busy={loading}
         >
           {loading ? 'Logging in...' : 'Login'}
         </button>
@@ -154,5 +222,5 @@ export default function Login({ onLogin }) {
         </p>
       </div>
     </div>
-  )
+  );
 }

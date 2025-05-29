@@ -44,7 +44,7 @@ export default function ListingDetails({ user }) {
   const handleSubmitInquiry = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/listings/${id}/inquiries`, {
+      const response = await fetch(`https://agroconnect-backend-13.onrender.com/listings/${id}/inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

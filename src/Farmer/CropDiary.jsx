@@ -11,7 +11,7 @@ const CropDiary = () => {
     const fetchCrops = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/crops', {
+        const res = await axios.get('https://agroconnect-backend-13.onrender.com/crops', {
           headers: { 'x-access-token': token }
         });
         setCrops(res.data.crops);
