@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
@@ -13,8 +12,8 @@ const ArticleDetails = () => {
     const fetchArticle = async () => {
       try {
         const [articleResponse, articlesResponse] = await Promise.all([
-          fetch(`/articles/${id}`),
-          fetch('/articles')
+          fetch(`https://agroconnect-backend-13.onrender.com/articles/${id}`),
+          fetch('https://agroconnect-backend-13.onrender.com/articles')
         ]);
 
         if (!articleResponse.ok) {

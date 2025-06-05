@@ -21,144 +21,33 @@ export default function ContactUs() {
     setFormData({ name: '', email: '', message: '' });
   };
 
-  const containerStyle = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '60px 20px',
-    fontFamily: "'Inter', sans-serif",
-    color: '#1a202c',
-  };
-
-  const heading1Style = {
-    fontSize: '2.5rem',
-    fontWeight: '800',
-    marginBottom: '40px',
-    color: '#064e3b',
-    textAlign: 'center',
-  };
-
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-    gap: '60px',
-    alignItems: 'start',
-  };
-
-  const contactCardStyle = {
-    backgroundColor: '#f0fdf4',
-    padding: '32px',
-    borderRadius: '16px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-  };
-
-  const heading2Style = {
-    fontSize: '1.5rem',
-    fontWeight: '700',
-    marginBottom: '24px',
-    color: '#065f46',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-  };
-
-  const paragraphStyle = {
-    marginBottom: '20px',
-    lineHeight: '1.6',
-    color: '#4a5568',
-  };
-
-  const contactItemStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    marginBottom: '16px',
-    color: '#4a5568',
-  };
-
-  const iconStyle = {
-    color: '#047857',
-    fontSize: '1.2rem',
-    minWidth: '24px',
-  };
-
-  const labelStyle = {
-    display: 'block',
-    marginBottom: '8px',
-    fontWeight: '600',
-    color: '#2d3748',
-  };
-
-  const inputStyle = {
-    width: '100%',
-    padding: '12px 16px',
-    border: '1px solid #cbd5e0',
-    borderRadius: '8px',
-    fontSize: '16px',
-    outline: 'none',
-    boxSizing: 'border-box',
-    transition: 'border-color 0.3s ease',
-    marginBottom: '20px',
-  };
-
-  const textareaStyle = {
-    ...inputStyle,
-    resize: 'vertical',
-    minHeight: '120px',
-  };
-
-  const buttonStyle = {
-    backgroundColor: hover ? '#065f46' : '#047857',
-    color: '#ffffff',
-    padding: '12px 32px',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontWeight: '600',
-    fontSize: '16px',
-    transition: 'all 0.3s ease',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    boxShadow: hover ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
-    transform: hover ? 'translateY(-2px)' : 'none',
-  };
-
-  const mapContainerStyle = {
-    height: '300px',
-    width: '100%',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    marginTop: '40px',
-    border: '1px solid #e2e8f0',
-  };
-
   return (
-    <div style={containerStyle}>
-      <h1 style={heading1Style}>We'd Love to Hear From You</h1>
-      <div style={gridStyle}>
+    <div className="contact-us-container">
+      <h1 className="contact-us-title">We'd Love to Hear From You</h1>
+      <div className="contact-us-grid">
         <div>
-          <div style={contactCardStyle}>
-            <h2 style={heading2Style}><FaMapMarkerAlt style={iconStyle} /> Our Location</h2>
-            <p style={paragraphStyle}>
+          <div className="contact-card">
+            <h2 className="contact-card-title"><FaMapMarkerAlt className="contact-card-icon" /> Our Location</h2>
+            <p className="contact-card-description">
               Visit us at our headquarters or reach out through any of our contact channels. 
               Our team is always ready to assist you with your agricultural needs.
             </p>
             
-            <div style={contactItemStyle}>
-              <FaMapMarkerAlt style={iconStyle} />
+            <div className="contact-info-item">
+              <FaMapMarkerAlt className="contact-info-icon" />
               <span>123 Farm Street, Agricultural City, AC 12345</span>
             </div>
-            <div style={contactItemStyle}>
-              <FaPhone style={iconStyle} />
+            <div className="contact-info-item">
+              <FaPhone className="contact-info-icon" />
               <span>+1 (234) 567-8900</span>
             </div>
-            <div style={contactItemStyle}>
-              <FaEnvelope style={iconStyle} />
+            <div className="contact-info-item">
+              <FaEnvelope className="contact-info-icon" />
               <span>info@agroconnect.com</span>
             </div>
           </div>
 
-          <div style={mapContainerStyle}>
+          <div className="map-container">
             {/* Replace with your actual map embed code */}
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209179535!2d-73.9878449245258!3d40.74844097138958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTkuMiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
@@ -172,47 +61,47 @@ export default function ContactUs() {
           </div>
         </div>
 
-        <div style={contactCardStyle}>
-          <h2 style={heading2Style}><FaPaperPlane style={iconStyle} /> Send us a Message</h2>
-          <p style={paragraphStyle}>
+        <div className="contact-card">
+          <h2 className="contact-card-title"><FaPaperPlane className="contact-card-icon" /> Send us a Message</h2>
+          <p className="contact-card-description">
             Have questions about our services? Want to learn how AgroConnect can help your farm thrive?
             Drop us a message and our agricultural experts will get back to you within 24 hours.
           </p>
           
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label style={labelStyle} htmlFor="name">
-                <FaUser style={{ ...iconStyle, fontSize: '1rem' }} /> Your Name
+          <form onSubmit={handleSubmit} className="contact-form">
+            <div className="form-group">
+              <label className="form-label" htmlFor="name">
+                <FaUser className="form-icon" /> Your Name
               </label>
               <input 
                 type="text" 
                 id="name" 
-                style={inputStyle} 
+                className="form-input" 
                 value={formData.name}
                 onChange={handleChange}
                 required 
               />
             </div>
-            <div>
-              <label style={labelStyle} htmlFor="email">
-                <FaEnvelope style={{ ...iconStyle, fontSize: '1rem' }} /> Email Address
+            <div className="form-group">
+              <label className="form-label" htmlFor="email">
+                <FaEnvelope className="form-icon" /> Email Address
               </label>
               <input 
                 type="email" 
                 id="email" 
-                style={inputStyle} 
+                className="form-input" 
                 value={formData.email}
                 onChange={handleChange}
                 required 
               />
             </div>
-            <div>
-              <label style={labelStyle} htmlFor="message">
-                <FaPaperPlane style={{ ...iconStyle, fontSize: '1rem' }} /> Your Message
+            <div className="form-group">
+              <label className="form-label" htmlFor="message">
+                <FaPaperPlane className="form-icon" /> Your Message
               </label>
               <textarea 
                 id="message" 
-                style={textareaStyle} 
+                className="form-textarea" 
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -220,7 +109,7 @@ export default function ContactUs() {
             </div>
             <button
               type="submit"
-              style={buttonStyle}
+              className="form-button"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >

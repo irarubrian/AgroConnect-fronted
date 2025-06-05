@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 export default function AdminListings() {
@@ -22,7 +21,7 @@ export default function AdminListings() {
   const updateListingStatus = async (id, action) => {
     setMessage('');
     try {
-      const res = await fetch(`http://localhost:5000/admin/listings/${id}/${action}`, {
+      const res = await fetch(`https://agroconnect-backend-13.onrender.com/admin/listings/${id}/${action}`, {
         method: 'PUT',
         headers: { 'x-access-token': token }
       });

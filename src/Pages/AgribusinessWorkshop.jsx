@@ -74,328 +74,43 @@ export default function AgribusinessWorkshop() {
     setCurrentVideoUrl('');
   };
 
-  // Styles (same as before)
-  const containerStyle = {
-    maxWidth: '1000px',
-    margin: '0 auto',
-    padding: '32px 16px 64px',
-    fontFamily: "'Inter', sans-serif",
-    color: '#111827',
-  };
-
-  const headerStyle = {
-    textAlign: 'center',
-    marginBottom: '48px'
-  };
-
-  const headingStyle = {
-    fontSize: '2.5rem',
-    fontWeight: '800',
-    color: '#064e3b',
-    marginBottom: '16px'
-  };
-
-  const subheadingStyle = {
-    fontSize: '1.25rem',
-    color: '#4b5563',
-    maxWidth: '700px',
-    margin: '0 auto',
-    lineHeight: '1.6'
-  };
-
-  const tabContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: '32px',
-    borderBottom: '1px solid #e5e7eb',
-    paddingBottom: '8px'
-  };
-
-  const tabStyle = {
-    padding: '12px 24px',
-    cursor: 'pointer',
-    fontWeight: '600',
-    color: '#6b7280',
-    borderBottom: '3px solid transparent',
-    transition: 'all 0.3s ease'
-  };
-
-  const activeTabStyle = {
-    ...tabStyle,
-    color: '#064e3b',
-    borderBottom: '3px solid #064e3b'
-  };
-
-  const workshopGridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
-    gap: '24px',
-    marginBottom: '48px'
-  };
-
-  const workshopCardStyle = {
-    backgroundColor: 'white',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-    border: '1px solid #e5e7eb',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-  };
-
-  const workshopHeaderStyle = {
-    backgroundColor: '#f0fdf4',
-    padding: '20px',
-    borderBottom: '1px solid #d1fae5'
-  };
-
-  const workshopTitleStyle = {
-    fontSize: '1.25rem',
-    fontWeight: '700',
-    color: '#064e3b',
-    marginBottom: '8px'
-  };
-
-  const workshopMetaStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    color: '#6b7280',
-    fontSize: '0.9rem',
-    marginBottom: '4px'
-  };
-
-  const workshopBodyStyle = {
-    padding: '20px'
-  };
-
-  const workshopDescStyle = {
-    color: '#4b5563',
-    marginBottom: '16px',
-    lineHeight: '1.6'
-  };
-
-  const instructorContainerStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    marginBottom: '16px'
-  };
-
-  const instructorIconStyle = {
-    color: '#047857',
-    fontSize: '1.2rem'
-  };
-
-  const instructorTextStyle = {
-    fontSize: '0.95rem',
-    color: '#374151'
-  };
-
-  const workshopFooterStyle = {
-    padding: '16px 20px',
-    backgroundColor: '#f9fafb',
-    borderTop: '1px solid #e5e7eb',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  };
-
-  const capacityStyle = {
-    fontSize: '0.85rem',
-    color: '#6b7280'
-  };
-
-  const buttonStyle = {
-    backgroundColor: '#10b981',
-    color: 'white',
-    padding: '10px 20px',
-    borderRadius: '8px',
-    border: 'none',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px'
-  };
-
-  const buttonHoverStyle = {
-    backgroundColor: '#059669',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-  };
-
-  const buttonDisabledStyle = {
-    backgroundColor: '#d1d5db',
-    cursor: 'not-allowed'
-  };
-
-  const watchButtonStyle = {
-    backgroundColor: '#3b82f6',
-    color: 'white',
-    padding: '10px 20px',
-    borderRadius: '8px',
-    border: 'none',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px'
-  };
-
-  const watchButtonHoverStyle = {
-    backgroundColor: '#2563eb',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-  };
-
-  const benefitsSectionStyle = {
-    backgroundColor: '#f8fafc',
-    borderRadius: '12px',
-    padding: '32px',
-    marginTop: '48px'
-  };
-
-  const benefitsTitleStyle = {
-    fontSize: '1.5rem',
-    fontWeight: '700',
-    color: '#064e3b',
-    marginBottom: '24px',
-    textAlign: 'center'
-  };
-
-  const benefitsGridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-    gap: '24px'
-  };
-
-  const benefitCardStyle = {
-    backgroundColor: 'white',
-    borderRadius: '8px',
-    padding: '24px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
-    textAlign: 'center'
-  };
-
-  const benefitIconStyle = {
-    fontSize: '2rem',
-    color: '#10b981',
-    marginBottom: '16px'
-  };
-
-  const benefitTitleStyle = {
-    fontWeight: '600',
-    marginBottom: '8px',
-    color: '#111827'
-  };
-
-  const successMessageStyle = {
-    position: 'fixed',
-    top: '20px',
-    right: '20px',
-    backgroundColor: '#10b981',
-    color: 'white',
-    padding: '16px 24px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    zIndex: 100,
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    transition: 'all 0.3s ease',
-    transform: showSuccess ? 'translateX(0)' : 'translateX(120%)'
-  };
-
-  const modalStyle = {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-    padding: '20px'
-  };
-
-  const modalContentStyle = {
-    backgroundColor: 'white',
-    borderRadius: '12px',
-    padding: '20px',
-    maxWidth: '800px',
-    width: '100%',
-    position: 'relative'
-  };
-
-  const closeButtonStyle = {
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    backgroundColor: 'transparent',
-    border: 'none',
-    fontSize: '1.5rem',
-    cursor: 'pointer',
-    color: '#6b7280'
-  };
-
-  const videoContainerStyle = {
-    position: 'relative',
-    paddingBottom: '56.25%',
-    height: '0',
-    overflow: 'hidden',
-    borderRadius: '8px'
-  };
-
-  const iframeStyle = {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    border: 'none'
-  };
-
   return (
-    <div style={containerStyle}>
-      <div style={headerStyle}>
-        <h1 style={headingStyle}>AgroConnect Professional Development</h1>
-        <p style={subheadingStyle}>
+    <div className="agribusiness-workshop-container">
+      <div className="header">
+        <h1 className="heading">AgroConnect Professional Development</h1>
+        <p className="subheading">
           Advance your agricultural knowledge with our expert-led workshops covering the latest 
           technologies, sustainable practices, and business strategies.
         </p>
       </div>
 
-      <div style={tabContainerStyle}>
+      <div className="tab-container">
         <div 
-          style={activeTab === 'upcoming' ? activeTabStyle : tabStyle}
+          className={activeTab === 'upcoming' ? 'active-tab' : 'tab'}
           onClick={() => setActiveTab('upcoming')}
         >
           Upcoming Workshops
         </div>
         <div 
-          style={activeTab === 'past' ? activeTabStyle : tabStyle}
+          className={activeTab === 'past' ? 'active-tab' : 'tab'}
           onClick={() => setActiveTab('past')}
         >
           Past Workshops
         </div>
       </div>
 
-      <div style={successMessageStyle}>
+      <div className={showSuccess ? "success-message show" : "success-message"}>
         <FaCheckCircle />
         <span>Registration confirmed! Check your email for details.</span>
       </div>
 
       {showVideoModal && (
-        <div style={modalStyle} onClick={closeModal}>
-          <div style={modalContentStyle} onClick={e => e.stopPropagation()}>
-            <button style={closeButtonStyle} onClick={closeModal}>×</button>
-            <div style={videoContainerStyle}>
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <button className="close-button" onClick={closeModal}>×</button>
+            <div className="video-container">
               <iframe
-                style={iframeStyle}
+                className="video-iframe"
                 src={currentVideoUrl}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -406,59 +121,55 @@ export default function AgribusinessWorkshop() {
         </div>
       )}
 
-      <div style={workshopGridStyle}>
+      <div className="workshop-grid">
         {workshops[activeTab].map((workshop) => (
           <div 
             key={workshop.id} 
-            style={{
-              ...workshopCardStyle,
-              transform: hoveredButton === workshop.id ? 'translateY(-4px)' : 'none',
-              boxShadow: hoveredButton === workshop.id ? '0 10px 15px rgba(0, 0, 0, 0.1)' : '0 4px 6px rgba(0, 0, 0, 0.05)'
-            }}
+            className={`workshop-card ${hoveredButton === workshop.id ? 'hovered' : ''}`}
             onMouseEnter={() => setHoveredButton(workshop.id)}
             onMouseLeave={() => setHoveredButton(null)}
           >
-            <div style={workshopHeaderStyle}>
-              <h3 style={workshopTitleStyle}>{workshop.title}</h3>
-              <div style={workshopMetaStyle}>
+            <div className="workshop-header">
+              <h3 className="workshop-title">{workshop.title}</h3>
+              <div className="workshop-meta">
                 <FaCalendarAlt />
                 <span>{workshop.date}</span>
               </div>
-              <div style={workshopMetaStyle}>
+              <div className="workshop-meta">
                 <FaClock />
                 <span>{workshop.time}</span>
               </div>
-              <div style={workshopMetaStyle}>
+              <div className="workshop-meta">
                 <FaMapMarkerAlt />
                 <span>{workshop.location}</span>
               </div>
             </div>
             
-            <div style={workshopBodyStyle}>
-              <p style={workshopDescStyle}>{workshop.description}</p>
+            <div className="workshop-body">
+              <p className="workshop-desc">{workshop.description}</p>
               
-              <div style={instructorContainerStyle}>
-                <FaChalkboardTeacher style={instructorIconStyle} />
+              <div className="instructor-container">
+                <FaChalkboardTeacher className="instructor-icon" />
                 <div>
-                  <div style={{ fontWeight: '600' }}>{workshop.instructor}</div>
-                  <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>{workshop.instructorBio}</div>
+                  <div className="instructor-name">{workshop.instructor}</div>
+                  <div className="instructor-bio">{workshop.instructorBio}</div>
                 </div>
               </div>
             </div>
             
-            <div style={workshopFooterStyle}>
+            <div className="workshop-footer">
               {activeTab === 'upcoming' ? (
                 <>
-                  <div style={capacityStyle}>
+                  <div className="capacity">
                     {workshop.registered}/{workshop.capacity} spots filled • {workshop.price}
                   </div>
                   <button
-                    style={
+                    className={
                       registeredWorkshops.includes(workshop.id)
-                        ? { ...buttonStyle, ...buttonDisabledStyle }
+                        ? 'button disabled'
                         : hoveredButton === workshop.id
-                        ? { ...buttonStyle, ...buttonHoverStyle }
-                        : buttonStyle
+                        ? 'button hovered'
+                        : 'button'
                     }
                     onClick={() => handleRegister(workshop.id)}
                     disabled={registeredWorkshops.includes(workshop.id)}
@@ -474,10 +185,10 @@ export default function AgribusinessWorkshop() {
                 </>
               ) : (
                 <button
-                  style={
+                  className={
                     hoveredButton === workshop.id && workshop.recordingAvailable
-                      ? { ...watchButtonStyle, ...watchButtonHoverStyle }
-                      : watchButtonStyle
+                      ? 'watch-button hovered'
+                      : 'watch-button'
                   }
                   onClick={() => workshop.recordingAvailable && handleWatchRecording(workshop.recordingUrl)}
                   disabled={!workshop.recordingAvailable}
@@ -490,27 +201,27 @@ export default function AgribusinessWorkshop() {
         ))}
       </div>
 
-      <div style={benefitsSectionStyle}>
-        <h2 style={benefitsTitleStyle}>Workshop Benefits</h2>
-        <div style={benefitsGridStyle}>
-          <div style={benefitCardStyle}>
-            <FaCertificate style={benefitIconStyle} />
-            <h3 style={benefitTitleStyle}>Certification</h3>
+      <div className="benefits-section">
+        <h2 className="benefits-title">Workshop Benefits</h2>
+        <div className="benefits-grid">
+          <div className="benefit-card">
+            <FaCertificate className="benefit-icon" />
+            <h3 className="benefit-title">Certification</h3>
             <p>Receive completion certificates to showcase your professional development</p>
           </div>
-          <div style={benefitCardStyle}>
-            <FaChalkboardTeacher style={benefitIconStyle} />
-            <h3 style={benefitTitleStyle}>Expert Instructors</h3>
+          <div className="benefit-card">
+            <FaChalkboardTeacher className="benefit-icon" />
+            <h3 className="benefit-title">Expert Instructors</h3>
             <p>Learn from leading agricultural professionals and researchers</p>
           </div>
-          <div style={benefitCardStyle}>
-            <FaMapMarkerAlt style={benefitIconStyle} />
-            <h3 style={benefitTitleStyle}>Networking</h3>
+          <div className="benefit-card">
+            <FaMapMarkerAlt className="benefit-icon" />
+            <h3 className="benefit-title">Networking</h3>
             <p>Connect with fellow farmers and industry professionals</p>
           </div>
-          <div style={benefitCardStyle}>
-            <FaCheckCircle style={benefitIconStyle} />
-            <h3 style={benefitTitleStyle}>Practical Skills</h3>
+          <div className="benefit-card">
+            <FaCheckCircle className="benefit-icon" />
+            <h3 className="benefit-title">Practical Skills</h3>
             <p>Gain immediately applicable knowledge and techniques</p>
           </div>
         </div>

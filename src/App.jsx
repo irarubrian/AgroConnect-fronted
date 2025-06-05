@@ -18,33 +18,36 @@ import Homepage from './Pages/Homepage';
 import AboutUs from './Pages/AboutUs';
 import ContactUs from './Pages/ContactUs';
 import AgribusinessWorkshop from './Pages/AgribusinessWorkshop';
-import SupportingOrphans from  './Pages/SupportingOpherns';
+import SupportingOrphans from './Pages/SupportingOpherns';
 import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [refreshHover, setRefreshHover] = useState(false);
+  const [footerLinkHoverIndex, setFooterLinkHoverIndex] = useState(null);
+  const [returnHomeHover, setReturnHomeHover] = useState(false);
 
+  // Initialize authentication state
   useEffect(() => {
     const initializeAuth = async () => {
       try {
         const token = localStorage.getItem('token');
-        if (token) {
-          const userDataString = localStorage.getItem('user');
-          if (userDataString) {
-            try {
-              const userData = JSON.parse(userDataString);
-              if (userData && typeof userData === 'object') {
-                setUser(userData);
-              } else {
-                console.warn('Invalid user data format');
-                clearAuthData();
-              }
-            } catch (parseError) {
-              console.error('Failed to parse user data:', parseError);
+        const userDataString = localStorage.getItem('user');
+        
+        if (token && userDataString) {
+          try {
+            const userData = JSON.parse(userDataString);
+            if (userData && typeof userData === 'object') {
+              setUser(userData);
+            } else {
+              console.warn('Invalid user data format');
               clearAuthData();
             }
+          } catch (parseError) {
+            console.error('Failed to parse user data:', parseError);
+            clearAuthData();
           }
         }
       } catch (err) {
@@ -81,6 +84,10 @@ function App() {
     setError(null);
   };
 
+  const handleRegister = (userData, token) => {
+    handleLogin(userData, token); // Reuse login logic for registration
+  };
+
   // Inline styles
   const styles = {
     loadingContainer: {
@@ -93,7 +100,7 @@ function App() {
     spinner: {
       width: 64,
       height: 64,
-      border: '4px dashed #2563EB', // blue-600
+      border: '4px dashed #2563EB',
       borderRadius: '50%',
       animation: 'spin 1s linear infinite',
       borderColor: 'transparent transparent #2563EB #2563EB',
@@ -112,11 +119,11 @@ function App() {
     errorTitle: {
       fontSize: 24,
       fontWeight: 'bold',
-      color: '#DC2626', // red-600
+      color: '#DC2626',
       marginBottom: 16,
     },
     errorText: {
-      color: '#374151', // gray-700
+      color: '#374151',
       marginBottom: 16,
     },
     refreshButton: {
@@ -130,12 +137,12 @@ function App() {
       transition: 'background-color 0.3s',
     },
     refreshButtonHover: {
-      backgroundColor: '#374151', // gray-800
+      backgroundColor: '#374151',
     },
     appContainer: {
       minHeight: '100vh',
       backgroundColor: 'white',
-      color: '#111827', // gray-900
+      color: '#111827',
       display: 'flex',
       flexDirection: 'column',
     },
@@ -146,7 +153,7 @@ function App() {
       padding: '32px 16px',
     },
     footer: {
-      backgroundColor: '#111827', // gray-900
+      backgroundColor: '#111827',
       color: 'white',
       padding: '24px 0',
       textAlign: 'center',
@@ -158,7 +165,7 @@ function App() {
       gap: 16,
     },
     footerLink: {
-      color: '#D1D5DB', // gray-300
+      color: '#D1D5DB',
       textDecoration: 'none',
       cursor: 'pointer',
       transition: 'color 0.3s',
@@ -169,7 +176,7 @@ function App() {
     notFoundContainer: {
       textAlign: 'center',
       padding: 48,
-      color: '#111827', // gray-900
+      color: '#111827',
     },
     notFoundTitle: {
       fontSize: 36,
@@ -189,21 +196,14 @@ function App() {
       cursor: 'pointer',
     },
     returnHomeButtonHover: {
-      backgroundColor: '#374151', // gray-800
+      backgroundColor: '#374151',
     },
   };
-
-  // Hover states for buttons/links managed with useState
-  const [refreshHover, setRefreshHover] = useState(false);
-  const [footerLinkHoverIndex, setFooterLinkHoverIndex] = useState(null);
-  const [returnHomeHover, setReturnHomeHover] = useState(false);
 
   if (loading) {
     return (
       <div style={styles.loadingContainer}>
-        <div
-          style={styles.spinner}
-        />
+        <div style={styles.spinner} />
         <style>{`
           @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -243,18 +243,27 @@ function App() {
       <main style={styles.mainContent}>
         <Routes>
           {/* Auth Routes */}
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
-          <Route path="/register" element={user ? <Navigate to="/" /> : <Register onRegister={handleLogin} />} />
+          <Route 
+            path="/login" 
+            element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} 
+          />
+          <Route 
+            path="/register" 
+            element={user ? <Navigate to="/" /> : <Register onRegister={handleRegister} />} 
+          />
 
-          {/* Marketplace Routes */}
+          {/* Public Routes */}
           <Route path="/marketplace" element={<Listings user={user} />} />
           <Route path="/marketplace/:id" element={<ListingDetails user={user} />} />
-
-          {/* Resource Routes */}
           <Route path="/resources" element={<Articles />} />
           <Route path="/resources/:id" element={<ArticleDetails />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/workshops" element={<AgribusinessWorkshop />} />
+          <Route path="/Support" element={<SupportingOrphans />} />
+          <Route path="/" element={<Homepage user={user} />} />
 
-          {/* Farmer Routes */}
+          {/* Protected Farmer Routes */}
           <Route 
             path="/farmer/crops" 
             element={user?.role === 'farmer' ? <FarmerCrops user={user} /> : <Navigate to="/login" />} 
@@ -276,7 +285,7 @@ function App() {
             element={user?.role === 'farmer' ? <AddListing user={user} /> : <Navigate to="/login" />} 
           />
 
-          {/* Admin Routes */}
+          {/* Protected Admin Routes */}
           <Route 
             path="/admin" 
             element={user?.role === 'admin' ? <AdminListings user={user} /> : <Navigate to="/login" />} 
@@ -285,15 +294,6 @@ function App() {
             path="/admin/users" 
             element={user?.role === 'admin' ? <AdminUsers user={user} /> : <Navigate to="/login" />} 
           />
-
-          {/* New Pages Routes */}
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/workshops" element={<AgribusinessWorkshop />} />
-          <Route path="/Support" element={<SupportingOrphans />} />
-
-          {/* Updated Home Route */}
-          <Route path="/" element={<Homepage user={user} />} />
 
           {/* 404 Route */}
           <Route path="*" element={
